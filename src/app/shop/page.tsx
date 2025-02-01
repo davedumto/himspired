@@ -7,55 +7,75 @@ import tuxedo from "../../../public/images/tuxedo.svg"
 import pants from "../../../public/images/pants.svg"
 import ProductCard from "@/components/product/product-card.component";
 import { useState } from "react";
-const Shop = () => {
-    const products = [
-        {
-            name: "himspire mens suit",
-            price: "1,525,000.00",
-            category: "Suit",
-            image: suit
-        },
-        {
-            name: "hiMSPIRE OFF-WHITE",
-            price: "1,525,000.00",
-            category: "T-shirt",
-            image: pants
-        },
-        {
-            name: "hiMSPIRE Wine FOrt",
-            price: "1,525,000.00",
-            category: "Suit",
-            image: tuxedo
-        },
-        {
-            name: "himspire jackets",
-            price: "1,525,000.00",
-            category: "Jackets",
-            image: jacket
-        },
-        {
-            name: "V-neck knit",
-            price: "1,525,000.00",
-            category: "Suit",
-            image: knit
-        },
-    ]
-    const [activeTab, setActiveTab] = useState("all")
-    return (
-        <>
-            <div className="w-full min-h-screen">
-                <ShopNavigationBar activeTab={activeTab} setActiveTab={setActiveTab} />
 
-                <div className="w-full mt-[123px] px-[120px]" >
-                    <div className="w-full flex items-center justify-between flex-wrap" >
-                        {products.map(({ name, price, category, image }) => (
-                            <ProductCard title={name} price={price} category={category} image={image} key={name} />
-                        ))}
-                    </div>
-                </div>
-            </div>
-        </>
-    );
+// Import or define the TabValue type
+type TabValue = "all" | "thrift" | "luxury" | "senetors";
+
+// Define the Product type for better type safety
+interface Product {
+  name: string;
+  price: string;
+  category: string;
+  image: string; // or the correct type for your images
+}
+
+const Shop = () => {
+  const products: Product[] = [
+    {
+      name: "himspire mens suit",
+      price: "1,525,000.00",
+      category: "Suit",
+      image: suit
+    },
+    {
+      name: "hiMSPIRE OFF-WHITE",
+      price: "1,525,000.00",
+      category: "T-shirt",
+      image: pants
+    },
+    {
+      name: "hiMSPIRE Wine FOrt",
+      price: "1,525,000.00",
+      category: "Suit",
+      image: tuxedo
+    },
+    {
+      name: "himspire jackets",
+      price: "1,525,000.00",
+      category: "Jackets",
+      image: jacket
+    },
+    {
+      name: "V-neck knit",
+      price: "1,525,000.00",
+      category: "Suit",
+      image: knit
+    },
+  ];
+
+  
+  const [activeTab, setActiveTab] = useState<TabValue>("all");
+
+  return (
+    <>
+      <div className="w-full min-h-screen">
+        <ShopNavigationBar activeTab={activeTab} setActiveTab={setActiveTab} />
+        <div className="w-full mt-[123px] px-[120px]">
+          <div className="w-full flex items-center justify-between flex-wrap">
+            {products.map(({ name, price, category, image }) => (
+              <ProductCard 
+                title={name} 
+                price={price} 
+                category={category} 
+                image={image} 
+                key={name} 
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    </>
+  );
 }
 
 export default Shop;

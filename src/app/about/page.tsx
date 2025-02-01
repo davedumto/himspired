@@ -7,12 +7,12 @@ import JoinTheTeam from "@/components/pages/about-us/join-team.component";
 const AboutUs = () => {
     return (
         <>
-            <div className="w-full  min-h-screen mt-[101.5px] pb-[120.93px]" >
+            <div className="w-full  min-h-screen mt-[3em] lg:mt-[101.5px] pb-[120.93px]" >
                 <Empowering />
 
-                <div className="w-full mt-[80px]" >
+                <div className="w-full lg:mt-[80px] mt-[2em] " >
                     <Image src={aboutUsImage} className="w-full object-contain" alt="about-us" />
-                </div> 
+                </div>
 
                 <VisionStatement/>
 
